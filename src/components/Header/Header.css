@@ -1,0 +1,21 @@
+.header-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background: transparent;
+    font-size: 2rem;
+    height: 12vh;
+    margin-left: 5rem;
+    margin-right: 5rem;
+}
+
+.icons {
+    font-size: 1.4rem;
+    color: white;
+}
+
+.info-player {
+    display: flex;
+    gap: 2rem;
+}
