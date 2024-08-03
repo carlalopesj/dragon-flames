@@ -7,7 +7,7 @@
   font-family: "Pixelify Sans", sans-serif;
 }
 
-button {
+button, .start {
   text-decoration: none;
   color: white;
   background-color: #fdc00f;
@@ -19,7 +19,7 @@ button {
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-button:hover {
+button:hover, .start:hover {
   cursor: pointer;
   background-color: #e4b321;
   transform: scale(1.05);
