@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Agbalumo&family=Black+Ops+One&family=DM+Serif+Display&family=Dela+Gothic+One&family=Kanit:ital,wght@0,400;1,200&family=Labrada:wght@100;200&family=Lato:wght@100;300;400;700&family=Martian+Mono:wght@200;400;600&family=Pacifico&family=Pixelify+Sans:wght@400..700&family=Raleway:wght@100;300&family=Ubuntu:wght@300;400;700&family=Young+Serif&display=swap');
+/*Zerando a página*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Pixelify Sans", sans-serif;
+}
+
+button {
+  text-decoration: none;
+  color: white;
+  background-color: #fdc00f;
+  padding: 10px;
+  font-size: 1.2rem;
+  margin-top: 20px;
+  border-radius: 8px;
+  border: 3px solid #886c34;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: #e4b321;
+  transform: scale(1.05);
+}
+
+.link {
+  text-decoration: none;
+  color: white;
+}
