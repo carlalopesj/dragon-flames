@@ -1,0 +1,32 @@
+.home-page {
+    background-image: url(../../assets/fundo-principal.jpg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px 80px;
+    color: white;
+    height: 100vh;
+}
+
+#title {
+    font-size: 3rem;
+}
+
+#img-dragon {
+    width: auto;
+    height: 420px;
+    margin: 30px;
+    border-radius: 20px;
+}
+
+#description {
+    width: 50%;
+    margin: auto;
+    text-align: justify;
+}
+
+.start svg {
+    margin-right: 10px;
+}
