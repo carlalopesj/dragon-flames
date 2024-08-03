@@ -7,7 +7,7 @@ function Characters(props) {
         <div className='character-container'>
             <h2>{props.type}</h2>
             <img src={props.img} className='img-character'/>
-            <div class="infos">
+            <div className="infos">
                 <p>Saúde: {props.health}</p>
                 <p>Prata: {props.gold}</p>
             </div>
