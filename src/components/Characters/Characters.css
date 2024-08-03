@@ -1,0 +1,16 @@
+.character-container h2{
+    margin-top: 2rem;
+}
+
+.img-character {
+    margin-top: 2rem;
+    width: auto;
+    height: 260px;
+    border: 1px solid white;
+    border-radius: 1rem;
+    padding: 0rem 1rem;
+}
+
+.infos {
+    margin-top: 2rem;
+}
