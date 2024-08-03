@@ -1,0 +1,16 @@
+.choose-page {
+    background-image: url(../../assets/fundo-principal.jpg);
+    color: white;
+    height: 100vh;
+    text-align: center;
+    padding-top: 2rem;
+}
+
+.choose-container {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 15rem;
+}
