@@ -1,0 +1,19 @@
+.game-page {
+    background-image: url(../../assets/Fundo-Praca.jpg);
+    height: 100vh;
+}
+
+.destiny-page h1 {
+    text-align: center;
+    color: white;
+    margin-top: 2rem;
+}
+
+.destiny-container {
+    margin-top: 1.6rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10rem;
+}
