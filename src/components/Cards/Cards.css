@@ -11,7 +11,8 @@
 }
 
 .img-card {
-    width: auto;
+    width: 100%;
+    max-width: 90%;
     height: 14rem;
     border: 1px solid white;
     border-radius: 1rem;
