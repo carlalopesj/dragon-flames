@@ -8,6 +8,20 @@
     height: 12vh;
     margin-left: 5rem;
     margin-right: 5rem;
+    list-style: none;
+}
+
+.redirect, .btn-back {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+}
+
+.redirect li {
+    font-size: 1.4rem;
+    border-radius: 0.5rem;
+    padding: 0.2rem;
 }
 
 .icons {
@@ -18,4 +32,18 @@
 .info-player {
     display: flex;
     gap: 2rem;
+    align-items: center;
 }
+
+.info-player p {
+    font-size: 1.2rem;
+    color: white;
+}
+
+.info-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.6rem;
+}
+
