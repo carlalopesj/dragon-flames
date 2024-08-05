@@ -1,8 +1,19 @@
+import { useContext, useState } from 'react';
 import './Characters.css';
-import ImgArc from '../../assets/Arc.jpg';
 import { Link } from 'react-router-dom';
+import { PlayerContext } from '../../Context';
+
 function Characters(props) {
 
+    const { setPlayerData } = useContext(PlayerContext);
+
+    function selectPlayer() {
+        setPlayerData({
+            health: props.health,
+            gold: props.gold
+        })
+    }
+    
     return (
         <div className='character-container'>
             <h2>{props.type}</h2>
@@ -11,9 +22,12 @@ function Characters(props) {
                 <p>Saúde: {props.health}</p>
                 <p>Prata: {props.gold}</p>
             </div>
-            <button><Link to='/game' className='link'>{props.name}</Link></button>
+            <Link to='/game'className='link'>
+                <button onClick={selectPlayer}>{props.name}</button>
+            </Link>
         </div>
     );
 }
 
 export default Characters;
+

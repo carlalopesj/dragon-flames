@@ -6,7 +6,7 @@ function Cards(props) {
         <div className='cards-container'>
             <h2>{props.type}</h2>
             <img src={props.img} className='img-card'/>
-            <button className='btn-card'><Link to='/' className='link'>{props.name}</Link></button>
+            <Link to={props.link} className='link'><button className='btn-card'>{props.name}</button></Link>
         </div>
     )
 }
