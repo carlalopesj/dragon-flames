@@ -7,16 +7,26 @@ import Dragao from '../../assets/dragao.jpg'
 function Arena() {
 
     const monsters = [
-        {id: 1, type: "Level 1", image: Monster1, name: "Piruba"},
-        {id: 2, type: "Level 2", image: Monster2, name: "Cazabin"},
-        {id: 3, type: "Level 3", image: Dragao, name: "Pimenta"}
+        {id: 1, type: "Level 1", image: Monster1, name: "Piruba", saude: 15},
+        {id: 2, type: "Level 2", image: Monster2, name: "Cazabin", saude: 60},
+        {id: 3, type: "Level 3", image: Dragao, name: "Pimenta", saude: 300}
     ]
+
+    function lutarOne() {
+        console.log("Funcionando")
+    }
+    function lutarTwo() {
+        console.log("Funcionando 2")
+    }
+    function lutarTree() {
+        console.log("Funcionando 3")
+    }
 
     return (
         <div className="game-page">
             <Header backButton/>
             <div className="destiny-page">
-                <h1> Hora do fight: </h1>
+                <h1> Hora da Treta: </h1>
                 <div className="destiny-container">
                     {monsters.map((monster) => {
                         return <Cards 
@@ -24,6 +34,7 @@ function Arena() {
                             type={monster.type}
                             img={monster.image}
                             name={monster.name}
+                        
                         />
                     })}
                 </div>
