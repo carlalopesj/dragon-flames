@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import './CharacterChoose.css';
 import Characters from '../../components/Characters/Characters';
 import ImgArc from '../../assets/arc-sem-fundo.png';

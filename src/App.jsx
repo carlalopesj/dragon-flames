@@ -6,14 +6,10 @@ import Loja from './pages/Loja/Loja';
 import Arena from './pages/Arena/Arena';
 import Missao from './pages/Missao/Missao';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import PlayerProvider from './Context'; 
-import Header from './components/Header/Header'; 
 
 function App() {
   return (
-    <PlayerProvider>
       <Router>
-        <Header />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/character" element={<CharacterChoose />} />
@@ -23,7 +19,6 @@ function App() {
           <Route path="/missao" element={<Missao />} />
         </Routes>
       </Router>
-    </PlayerProvider>
   );
 }
 

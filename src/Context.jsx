@@ -5,7 +5,9 @@ export const PlayerContext = createContext();
 function PlayerProvider({ children }) {
     const [playerData, setPlayerData] = useState({
         health: 0,
-        gold: 0
+        gold: 0,
+        xp: 0,
+        weapon: "Graveto"
     });
 
     return (
@@ -13,6 +15,6 @@ function PlayerProvider({ children }) {
             {children}
         </PlayerContext.Provider>
     );
-};
+}
 
 export default PlayerProvider;

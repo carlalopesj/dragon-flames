@@ -1,19 +1,16 @@
-import { useContext, useState } from 'react';
+
 import './Characters.css';
 import { Link } from 'react-router-dom';
-import { PlayerContext } from '../../Context';
 
 function Characters(props) {
 
-    const { setPlayerData } = useContext(PlayerContext);
-
-    function selectPlayer() {
-        setPlayerData({
-            health: props.health,
-            gold: props.gold
-        })
+    function saveData() {
+        localStorage.setItem("Gold", props.gold);
+        localStorage.setItem("Health", props.health);
+        localStorage.setItem("XP", 0);
+        localStorage.setItem("Weapon", "Sticky");
     }
-    
+
     return (
         <div className='character-container'>
             <h2>{props.type}</h2>
@@ -23,7 +20,7 @@ function Characters(props) {
                 <p>Prata: {props.gold}</p>
             </div>
             <Link to='/game'className='link'>
-                <button onClick={selectPlayer}>{props.name}</button>
+            <button onClick={saveData}>{props.name}</button>
             </Link>
         </div>
     );
