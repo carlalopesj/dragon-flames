@@ -5,6 +5,7 @@ import Game from './pages/Game/Game';
 import Loja from './pages/Loja/Loja';
 import Arena from './pages/Arena/Arena';
 import Missao from './pages/Missao/Missao';
+import Fight from './pages/Fight/Fight';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path="/arena" element={<Arena />} />
           <Route path="/loja" element={<Loja />} />
           <Route path="/missao" element={<Missao />} />
+          <Route path="/fight" element={<Fight />}></Route>
         </Routes>
       </Router>
   );
