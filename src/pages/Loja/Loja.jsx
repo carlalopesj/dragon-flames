@@ -6,35 +6,51 @@ import ImgXp from '../../assets/xp-pixel.png';
 import ImgSword from '../../assets/espada-pixel.png';
 
 function Loja() {
-    // Estados para armazenar os valores do localStorage
+    // Array de armas com nome e poder
+    const armas = [
+        { nome: 'Sticky', poder: 10, custo: 10 },
+        { nome: 'Machado', poder: 30, custo: 20 },
+        { nome: 'Espada', poder: 50, custo: 30 },
+        { nome: 'Pistola', poder: 100, custo: 50 }
+    ];
+
+    const [comentarios, setComentarios] = useState("");
+
+    // Recupera o objeto da arma do localStorage ou define o padrão
+    let initialWeapon;
+    try {
+        initialWeapon = JSON.parse(localStorage.getItem("Weapon")) || armas[0];
+    } catch (error) {
+        initialWeapon = armas[0]; // Define o primeiro item da lista como padrão
+    }
+
     const [gold, setGold] = useState(parseInt(localStorage.getItem("Gold")) || 0);
     const [health, setHealth] = useState(parseInt(localStorage.getItem("Health")) || 0);
     const [xp, setXp] = useState(parseInt(localStorage.getItem("XP")) || 0);
-    const [weapon, setWeapon] = useState(localStorage.getItem("Weapon") || '');
+    const [weapon, setWeapon] = useState(initialWeapon);
 
     const items = [
-        { id: 1, type: "Saúde", image: ImgHealth, name: "+10 Saúde", actionBtn: addHealth },
-        { id: 2, type: "XP", image: ImgXp, name: "+5 XP", actionBtn: addXP },
-        { id: 3, type: "Arma", image: ImgSword, name: "Nova Arma", actionBtn: newWeapon }
+        { id: 1, type: "+10 Saúde", image: ImgHealth, name: "10 moedas", actionBtn: addHealth },
+        { id: 2, type: "+5 XP", image: ImgXp, name: "5 moedas", actionBtn: addXP },
+        { id: 3, type: "Nova Arma", image: ImgSword, name: "Nova Arma", actionBtn: comprarArma }
     ];
 
     function addHealth() {
-        console.log("Função chamadaaaa");
-        if (gold >= 10) { // Certifique-se de que o jogador tenha ouro suficiente
+        if (gold >= 10) {
             const newGold = gold - 10;
             const newHealth = health + 10;
 
-            // Atualiza o localStorage e o estado
             localStorage.setItem("Gold", newGold);
             localStorage.setItem("Health", newHealth);
             setGold(newGold);
             setHealth(newHealth);
+        } else {
+            setComentarios("Ouro insufiente, é difícil a pobreza...");
         }
+        setTimeout(() => setComentarios(""), 2000); 
     }
 
     function addXP() {
-        // Lógica para adicionar XP
-        console.log("Teste");
         if (gold >= 5) {
             const newGold = gold - 5;
             const newXp = xp + 5;
@@ -43,59 +59,45 @@ function Loja() {
             localStorage.setItem("XP", newXp);
             setGold(newGold);
             setXp(newXp);
+        } else {
+            setComentarios("Ouro insufiente, é difícil a pobreza...");
         }
-
+        setTimeout(() => setComentarios(""), 2000); 
     }
 
-    function newWeapon() {
-        // Lógica para trocar a arma
-        if (gold >= 10) {
-            if(weapon === 'Sticky') {
-                const newGold = gold - 10;
+    function comprarArma() {
+        const armaAtualIndex = armas.findIndex(a => a.nome === weapon.nome);
 
+        if (armaAtualIndex < armas.length - 1) {
+            const proximaArma = armas[armaAtualIndex + 1];
+
+            if (gold >= proximaArma.custo) {
+                const newGold = gold - proximaArma.custo;
                 localStorage.setItem("Gold", newGold);
-                localStorage.setItem("Weapon", "Machado");
                 setGold(newGold);
-                setWeapon("Machado");
-            }
 
-            if (gold >= 20) {
-                if (weapon === 'Machado') {
-                    const newGold = gold - 20;
-    
-                    localStorage.setItem("Gold", newGold);
-                    localStorage.setItem("Weapon", "Espada");
-                    setGold(newGold);
-                    setWeapon("Espada");
-                }
+                setWeapon(proximaArma);
+                localStorage.setItem("Weapon", JSON.stringify(proximaArma));
+            } else {
+                setComentarios("Ouro insufiente, é difícil a pobreza...");
             }
-
-            if (gold >= 30) {
-                if (weapon === 'Espada') {
-                    const newGold = gold - 30;
-    
-                    localStorage.setItem("Gold", newGold);
-                    localStorage.setItem("Weapon", "Pistola");
-                    setGold(newGold);
-                    setWeapon("Pistola");
-                }
-            }
-
+        } else {
+            setComentarios("Você já tem a melhor arma, doidão!");
         }
+        setTimeout(() => setComentarios(""), 2000); 
     }
 
     return (
-        <div className='game-page'>
-            {/* Passa os valores como props para o Header */}
+        <div className='game-page loja-page'>
             <Header 
                 backButton 
                 gold={gold} 
                 health={health} 
                 xp={xp} 
-                weapon={weapon}
+                weapon={weapon.nome} // Exibe o nome da arma no Header
             />
             <div className="destiny-page">
-                <h1>Gaste seu precioso dinheiro:</h1>
+                <h1>Deixe de ser pão-duro:</h1>
                 <div className='destiny-container'>
                     {items.map((item) => (
                         <Cards
@@ -108,6 +110,7 @@ function Loja() {
                     ))}
                 </div>
             </div>
+            <p id="coments">{comentarios}</p>
         </div>
     );
 }
