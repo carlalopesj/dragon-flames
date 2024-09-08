@@ -7,6 +7,7 @@ import Arena from './pages/Arena/Arena';
 import Missao from './pages/Missao/Missao';
 import Fight from './pages/Fight/Fight';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Restart from './pages/Restart/Restart';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/loja" element={<Loja />} />
           <Route path="/missao" element={<Missao />} />
           <Route path="/fight" element={<Fight />}></Route>
+          <Route path='/restart' element={<Restart />}></Route>
         </Routes>
       </Router>
   );
