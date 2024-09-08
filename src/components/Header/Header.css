@@ -47,3 +47,54 @@
     gap: 0.6rem;
 }
 
+.monster-health {
+    display: block;
+}
+
+@media screen and (max-width: 766px) {
+    .header-container {
+        justify-content: space-around;
+        font-size: 1.8rem;
+        height: 12vh;
+        margin-left: 0rem;
+        margin-right: 0rem;
+        align-items: center;  
+    }
+    
+    .redirect, .btn-back {
+        gap: 1rem;
+    }
+    
+    .redirect li {
+        font-size: 1.2rem;
+        border-radius: 0.5rem;
+        padding: 0.2rem;
+    }
+    
+    .icons {
+        font-size: 1.2rem;
+    }
+    
+    .info-player {
+        gap: 1rem;
+    }
+    
+    .info-player p {
+        font-size: 1rem;
+    }
+    
+    .info-group {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 0.6rem;
+    }
+    
+    .monster-health {
+        display: none;
+    }
+
+    .monster-health-mobile {
+        padding-top: -10px;
+    }
+}

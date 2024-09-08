@@ -18,3 +18,25 @@
     align-items: center;
     gap: 15rem;
 }
+
+@media screen and (max-width: 766px) {
+    
+    .choose-page h1 {
+        margin-top: 3rem;
+        font-size: 1.6rem;
+    }
+
+    .choose-page {
+        height: auto;
+    }
+    
+    .choose-container {
+        margin-top: 1.2rem;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 1.2rem;
+    }
+}

@@ -30,3 +30,24 @@
 .start svg {
     margin-right: 10px;
 }
+
+@media screen and (max-width: 766px) {
+
+    .home-page {
+        padding: 0px 0px;
+        color: white;
+        height: 100vh;
+    }
+    
+    #title {
+        font-size: 2rem;
+    }
+    
+    #img-dragon {
+        height: 280px;
+    }
+    
+    #description {
+        width: 80%;
+    }
+}

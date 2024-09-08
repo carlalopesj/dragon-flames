@@ -1,12 +1,16 @@
 .game-page {
     background-image: url(../../assets/Fundo-Praca.jpg);
+    background-size: contain;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .destiny-page h1 {
     text-align: center;
     color: white;
-    margin-top: 2rem;
+    margin-top: 1rem;
 }
 
 .destiny-container {
@@ -16,4 +20,55 @@
     justify-content: center;
     align-items: center;
     gap: 10rem;
+}
+
+.game-page p {
+    color: white;
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 1.2rem;
+}
+
+.loja-page {
+    background-image: url(../../assets/Fundo-Loja.jpg);
+}
+
+.arena-page {
+    background-image: url(../../assets/Fundo-Arena.jpg);
+    background-size: contain;
+}
+
+.missao-page {
+    background-image: url(../../assets/Fundo-Missoes.jpg);
+    background-size: contain;
+}
+
+@media screen and (max-width: 766px) {
+
+    .game-page {
+        background-size: cover;
+        height: auto;
+        padding-bottom: 3rem;
+    }
+    
+    .destiny-page h1 {
+        font-size: 1.6rem;
+    }
+    
+    .destiny-container {
+        margin-top: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+    }
+    
+    .game-page p {
+        color: white;
+        text-align: center;
+        margin-top: 2rem;
+        font-size: 1.2rem;
+    }
+
 }
