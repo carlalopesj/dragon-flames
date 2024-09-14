@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 import Header from "../../components/Header/Header";
 import Cards from "../../components/Cards/Cards";
-import Atacar from '../../assets/atacar-pixel.png';
-import Desviar from '../../assets/desviar-pixel.png';
-import Voltar from '../../assets/fundo-praca-clara.jpg';
+import Attack from '../../assets/items/attack.png';
+import Escape from '../../assets/items/escape.png';
+import Back from '../../assets/backgrounds/background-game-clean.jpg';
 import { useNavigate } from "react-router-dom";
 
 function Fight() {
 
-    // Estados para armazenar os valores do localStorage
+    // States to store localStorage values
     const [gold, setGold] = useState(parseInt(localStorage.getItem("Gold")) || 0);
     const [health, setHealth] = useState(parseInt(localStorage.getItem("Health")) || 0);
     const [xp, setXp] = useState(parseInt(localStorage.getItem("XP")) || 0);
@@ -17,130 +17,121 @@ function Fight() {
     const [monsterLevel, setMonsterLevel] = useState(localStorage.getItem("Monster" || 0));
 
     const actions = [
-        {id: 1, type: "Atacar", image: Atacar, name: "Tapa", actionBtn: atacar},
-        {id: 2, type: "Desviar", image: Desviar, name: "Ninja", actionBtn: desviar},
-        {id: 3, type: "Fugir", image: Voltar, name: "Correr", actionBtn: fugir}
+        {id: 1, type: "Atacar", image: Attack, name: "Tapa", actionBtn: attack},
+        {id: 2, type: "Desviar", image: Escape, name: "Ninja", actionBtn: escape},
+        {id: 3, type: "Fugir", image: Back, name: "Correr", actionBtn: run}
     ]
 
     const navigate = useNavigate();
-    const [comentarios, setComentarios] = useState("");
+    const [comments, setComments] = useState("");
 
-        // useEffect para recuperar a arma do localStorage e parsear
-        useEffect(() => {
-            const storedWeapon = localStorage.getItem("Weapon");
-            console.log("StoredWeapon " + storedWeapon);
-            if (storedWeapon) {
-                try {
-                    const parsedWeapon = JSON.parse(storedWeapon); // Parse o objeto JSON
-                    setWeapon(parsedWeapon.poder); // Define o objeto da arma no estado
-                } catch (error) {
-                    console.error("Erro ao parsear o objeto Weapon do localStorage:", error);
-                }
+    // useEffect to retrieve the weapon from localStorage and parse it
+    useEffect(() => {
+        const storedWeapon = localStorage.getItem("Weapon");
+        if (storedWeapon) {
+            try {
+                const parsedWeapon = JSON.parse(storedWeapon); // Parse the object to JSON
+                setWeapon(parsedWeapon.power); // Sets the weapon object in the state
+            } catch (error) {
+                console.error("Erro ao parsear o objeto Weapon do localStorage:", error);
             }
+        }
 
-            const storedMonster = localStorage.getItem("Monster");
-            if (storedMonster) {
+        const storedMonster = localStorage.getItem("Monster");
+        if (storedMonster) {
             const monsterObj = JSON.parse(storedMonster);
-            console.log("Monstro recuperado:", monsterObj);
-            setMonsterH(monsterObj.saude);
+            setMonsterH(monsterObj.health);
             setMonsterLevel(monsterObj.level);
-    }
-        }, []);
+        }
+    }, []);
 
-        // Recupera o poder da arma, se ela existir
+    // Recovers weapon power, if it exists
     const weaponPower = weapon ? weapon : 0;
 
-    //const [monsterH, setMonsterH] = useState(parseInt(localStorage.getItem("MonsterHealth")) || 0);
-    //console.log(monsterH);
+    function updatePlayerStats(newGold, newXp, newHealth) {
+        if (newGold !== undefined) {
+            setGold(newGold);
+            localStorage.setItem("Gold", newGold);
+        }
+        if (newXp !== undefined) {
+            setXp(newXp);
+            localStorage.setItem("XP", newXp);
+        }
+        if (newHealth !== undefined) {
+            setHealth(newHealth);
+            localStorage.setItem("Health", newHealth);
+        }
+    }
 
-    function getValorAtaqueMonstro(level) {
+    function getAttackValueMonster(level) {
         const hit = (level * 5) - (Math.floor(Math.random() * xp));
-        console.log(hit);
         return hit > 0 ? hit : 0;
     }
 
-    function monstroHit() {
-        //return Math.random() > .2 || saude < 20;
-    }
-    
+    function attack() {
+        const damagePlayer = weaponPower + Math.floor(Math.random() * xp) + 1;
+        const newMonsterHealth = monsterH - damagePlayer;
+        setMonsterH(newMonsterHealth);
+        localStorage.setItem("MonsterHealth", newMonsterHealth);
 
-    function atacar() {
-        // Cálculo do dano do jogador
-        console.log("Monster H "+ monsterH);
-        console.log(typeof xp);
-        const danoJogador = weaponPower + Math.floor(Math.random() * xp) + 1;
-        console.log("XP " + xp);
-        console.log("DanoJogador " + danoJogador);
-        const novaSaudeMonstro = monsterH - danoJogador;
-        console.log("NovaSaudeMonstro ", novaSaudeMonstro)
-        //console.log("Poder " + weapon.poder);
-    
-        // Atualize a saúde do monstro
-        setMonsterH(novaSaudeMonstro);
-        localStorage.setItem("MonsterHealth", novaSaudeMonstro);
-    
-        if (novaSaudeMonstro <= 0) {
-            console.log("Monstro derrotado!");
+        if (newMonsterHealth <= 0) {
             const newXpValue = xp + monsterLevel * 10;
             const newGoldValue = gold + monsterLevel * 5;
-            setXp(newXpValue);
-            setGold(newGoldValue);
-            localStorage.setItem("XP", newXpValue);
-            localStorage.setItem("Gold", newGoldValue);
-            setComentarios(`Monstro abatido com sucesso!\n+${monsterLevel * 10} XP\n+${monsterLevel * 5} moedas`);
-            setTimeout(() => navigate("/game"), 2000); // Redireciona após 2 segundos
+            updatePlayerStats(newGoldValue, newXpValue, health);
+            setComments(`Monstro abatido!\n+${monsterLevel * 10} XP\n+${monsterLevel * 5} moedas`);
+            win(monsterLevel);
             return;
         }
-    
-        // Monstro contra-ataca
-        const danoMonstro = getValorAtaqueMonstro(monsterLevel);
-        const novaSaudeJogador = health - danoMonstro;
-        setHealth(novaSaudeJogador);
-        localStorage.setItem("Health", novaSaudeJogador);
-    
-        if (novaSaudeJogador <= 0) {
-            console.log("Você foi derrotado!");
-            setComentarios("Você foi abatido, tente novamente!");
-            setTimeout(() => navigate("/restart"), 1000);
-            // Pode redirecionar ou resetar o estado
+
+        const damageMonster = getAttackValueMonster(monsterLevel);
+        const newPlayerHealth = health - damageMonster;
+        updatePlayerStats(gold, xp, newPlayerHealth);
+
+        if (newPlayerHealth <= 0) {
+            setComments("Você foi abatido, tente novamente!");
+            lose(newPlayerHealth);
         }
     }
     
-    
-    function desviar() {
-        const chanceDesvio = Math.random();
-        if (chanceDesvio > 0.5) {
-            console.log("Desvio bem-sucedido! Nenhum dano recebido.");
-            console.log(monsterLevel);
-            const novoXp = xp + (monsterLevel * 2);  // Calcule o novo XP aqui
-            setXp(novoXp);  // Atualize o estado com o novo XP
-            localStorage.setItem("XP", novoXp);  // Armazene o novo XP no localStorage
-            setComentarios(`Desvio bem-sucedido! Nenhum dano recebido. +${monsterLevel * 2} XP`);
+    function escape() {
+        const escapeChance = Math.random();
+        if (escapeChance > 0.5) {
+            const newXp = xp + (monsterLevel * 2);
+            updatePlayerStats(gold, newXp, health);
+            setComments(`Desvio bem-sucedido! +${monsterLevel * 2} XP`);
         } else {
-            console.log("Desvio falhou! Você foi atingido.");
-            const danoRecebido = getValorAtaqueMonstro(monsterLevel);
-            setComentarios(`Desvio falhou! Você foi atingido. -${danoRecebido}`);
-            const novaSaudeJogador = health - danoRecebido;
-            setHealth(novaSaudeJogador);
-            localStorage.setItem("Health", novaSaudeJogador);
-    
-            if (novaSaudeJogador <= 0) {
-                console.log("Você foi derrotado!");
-                // Pode redirecionar ou resetar o estado
-                setComentarios("Você foi derrotado!");
-                setTimeout(() => navigate("/restart"), 1000);
+            const damageReceived = getAttackValueMonster(monsterLevel);
+            const newPlayerHealth = health - damageReceived;
+            updatePlayerStats(gold, xp, newPlayerHealth);
+            setComments(`Desvio falhou! -${damageReceived}`);
+
+            if (newPlayerHealth <= 0) {
+                setComments("Você foi derrotado!");
+                lose(newPlayerHealth);
             }
         }
-        setTimeout(() => setComentarios(""), 2000);
+        setTimeout(() => setComments(""), 2000);
     }
     
-        
-
-
-    function fugir() {
-        console.log("Fugindo da batalha...");
-        setComentarios("Arregou mesmo???");
+    function run() {
+        setComments("Arregou mesmo???");
         setTimeout(() => navigate("/game"), 1000);
+    }
+
+    function lose(playerHealth) {
+        if(playerHealth < 0) {
+            localStorage.setItem("result", "defeat");
+            setTimeout(() => navigate("/restart"), 1000);
+        } 
+    }
+
+    function win(monsterLevel) {
+        if (monsterLevel === 20) {
+            localStorage.setItem("result", "victory");
+            setTimeout(() => navigate("/restart"), 1000);
+        } else {
+            setTimeout(() => navigate("/game"), 2000); 
+        }
     }
     
 
@@ -162,7 +153,7 @@ function Fight() {
                     })}
                 </div>
             </div>
-            <p id="coments">{comentarios}</p>
+            <p id="comments">{comments}</p>
         </div>
     )
 }

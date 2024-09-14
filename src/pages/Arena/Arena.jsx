@@ -1,36 +1,20 @@
-import { useState } from "react";
 import Header from "../../components/Header/Header";
 import Cards from "../../components/Cards/Cards";
-import Monster1 from '../../assets/monst-1.jpg';
-import Monster2 from '../../assets/monst-2.jpg';
-import Dragao from '../../assets/dragao.jpg'
+import Monster1 from '../../assets/monsters/monster-1.jpg';
+import Monster2 from '../../assets/monsters/monster-2.jpg';
+import Dragon from '../../assets/monsters/dragon.jpg';
 
 function Arena() {
 
     const monsters = [
-        {id: 1, type: "Level 1", image: Monster1, name: "Piruba", saude: 15, level: 2, actionBtn: lutarOne},
-        {id: 2, type: "Level 2", image: Monster2, name: "Cazabin", saude: 60, level: 8, actionBtn: lutarTwo},
-        {id: 3, type: "Level 3", image: Dragao, name: "Pimenta", saude: 300, level: 20, actionBtn: lutarTree}
+        {id: 1, type: "Level 1", image: Monster1, name: "Piruba", health: 15, level: 2, actionBtn: () => store(0)},
+        {id: 2, type: "Level 2", image: Monster2, name: "Cazabin", health: 60, level: 8, actionBtn: () => store(1)},
+        {id: 3, type: "Level 3", image: Dragon, name: "Pimenta", health: 300, level: 20, actionBtn: () => store(2)}
     ]
 
-    function lutarOne() {
-        let monster1 = 0;
-        armazenar(monster1);
-    }
-    function lutarTwo() {
-        console.log("Funcionando 2");
-        let monster2 = 1;
-        armazenar(monster2);
-    }
-    function lutarTree() {
-        console.log("Funcionando 3");
-        let monster3 = 2;
-        armazenar(monster3);
-    }
-
-    function armazenar(x) {
+    function store(x) {
         localStorage.setItem("Monster", JSON.stringify(monsters[x]));
-        localStorage.setItem("MonsterHealth", JSON.stringify(monsters[x].saude));
+        localStorage.setItem("MonsterHealth", JSON.stringify(monsters[x].health));
     }
 
     return (

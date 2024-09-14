@@ -1,16 +1,16 @@
 import './Game.css';
 import Header from '../../components/Header/Header';
 import Cards from '../../components/Cards/Cards';
-import ImgLoja from '../../assets/fundo-loja-clara.jpg';
-import ImgArena from '../../assets/fundo-arena-clara.jpg';
-import ImgMissao from '../../assets/fundo-missoes-clara.jpg';
+import ImgStore from '../../assets/backgrounds/background-store-clean.jpg';
+import ImgArena from '../../assets/backgrounds/background-arena-clean.jpg';
+import ImgMission from '../../assets/backgrounds/background-missions-clean.jpg';
 
 function Game() {
 
     const locals = [
-        { id: 1, type: "Loja", image: ImgLoja, name: "Feira", link: '/loja' },
+        { id: 1, type: "Loja", image: ImgStore, name: "Feira", link: '/store' },
         { id: 2, type: "Arena", image: ImgArena, name: "Ringue", link: '/arena' },
-        { id: 3, type: "Missões", image: ImgMissao, name: "Extra", link: '/missao' }
+        { id: 3, type: "Missões", image: ImgMission, name: "Extra", link: '/mission' }
     ];
 
     return (
