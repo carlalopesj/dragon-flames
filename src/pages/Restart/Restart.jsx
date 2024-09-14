@@ -1,29 +1,29 @@
 import './Restart.css';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from "react";
-import DerrotaImg from '../../assets/img-derrota.png';
-import VitoriaImg from '../../assets/img-trofeu.png';
+import ImgDefeat from '../../assets/defeat.png';
+import ImgVictory from '../../assets/victory.png';
 
 function Restart() {
 
-    const [resultado, setResultado] = useState("");
+    const [result, setResult] = useState("");
 
     useEffect(() => {
-        // Recupera o resultado da batalha do localStorage
-        const resultado = localStorage.getItem("resultado");
-        setResultado(resultado);
+        // Retrieves battle result from localStorage
+        const result = localStorage.getItem("result");
+        setResult(result);
     }, []);
 
     return (
         <div className="restart-page">
-            {resultado === "vitoria" ? (
-                <div className='win'>
-                    <img src={VitoriaImg} alt="Troféu" />
+            {result === "victory" ? (
+                <div className='victory'>
+                    <img src={ImgVictory} alt="Troféu" />
                     <h1>Parabéns, você venceu a batalha!</h1>
                 </div>
             ) : (
-                <div className='win'>
-                    <img src={DerrotaImg} alt="Derrota"/> 
+                <div>
+                    <img src={ImgDefeat} alt="Derrota"/> 
                     <h1>Que pena, você foi derrotado!</h1>
                 </div>
             )}

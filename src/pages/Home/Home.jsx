@@ -1,6 +1,6 @@
 import './Home.css';
 import { Link } from 'react-router-dom';
-import ImgDragon from '../../assets/dragao.jpg';
+import ImgDragon from '../../assets/monsters/dragon.jpg';
 import { FaPlay } from "react-icons/fa6";
 
 function Home() {

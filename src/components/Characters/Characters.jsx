@@ -10,7 +10,7 @@ function Characters(props) {
         localStorage.setItem("Health", props.health);
         localStorage.setItem("XP", 0);
         localStorage.setItem("Weapon", "Sticky");
-        const weapon = { nome: 'Sticky', poder: 10, custo: 10 }; 
+        const weapon = { name: 'Sticky', power: 10, cost: 10 }; 
         localStorage.setItem("Weapon", JSON.stringify(weapon));
     }
 

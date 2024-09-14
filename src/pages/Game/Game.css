@@ -1,5 +1,5 @@
 .game-page {
-    background-image: url(../../assets/Fundo-Praca.jpg);
+    background-image: url(../../assets/backgrounds/background-game.jpg);
     background-size: contain;
     height: 100vh;
     display: flex;
@@ -29,17 +29,17 @@
     font-size: 1.2rem;
 }
 
-.loja-page {
-    background-image: url(../../assets/Fundo-Loja.jpg);
+.store-page {
+    background-image: url(../../assets/backgrounds/background-store.jpg);
 }
 
 .arena-page {
-    background-image: url(../../assets/Fundo-Arena.jpg);
+    background-image: url(../../assets/backgrounds/background-arena.jpg);
     background-size: contain;
 }
 
-.missao-page {
-    background-image: url(../../assets/Fundo-Missoes.jpg);
+.mission-page {
+    background-image: url(../../assets/backgrounds/background-missions.jpg);
     background-size: contain;
 }
 

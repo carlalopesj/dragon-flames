@@ -1,5 +1,5 @@
 .home-page {
-    background-image: url(../../assets/fundo-principal.jpg);
+    background-image: url(../../assets/backgrounds/background-start.jpg);
     display: flex;
     flex-direction: column;
     justify-content: center;

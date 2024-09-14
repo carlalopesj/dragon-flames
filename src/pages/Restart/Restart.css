@@ -1,5 +1,5 @@
 .restart-page {
-    background-image: url(../../assets/fundos/fundo-principal.jpg);
+    background-image: url(../../assets/backgrounds/background-start.jpg);
     color: white;
     height: 100vh;
     display: flex;
@@ -18,7 +18,7 @@
     font-size: 1.6rem;
 }
 
-.win img {
+.victory img {
     width: 15rem;
     margin-bottom: 3rem;
 }
