@@ -1,0 +1,30 @@
+.restart-page {
+    background-image: url(../../assets/fundos/fundo-principal.jpg);
+    color: white;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+}
+
+.restart-page img {
+    width: 30rem;
+}
+
+.restart-page h1 {
+    font-size: 1.6rem;
+}
+
+.win img {
+    width: 15rem;
+    margin-bottom: 3rem;
+}
+
+@media screen and (max-width: 766px) {
+    .restart-page h1 {
+        font-size: 1.4rem;
+    }
+}
