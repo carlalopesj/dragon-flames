@@ -1,4 +1,3 @@
-import './App.css';
 import Home from './pages/Home/Home';
 import CharacterChoose from './pages/CharacterChoose/CharacterChoose';
 import Game from './pages/Game/Game';
