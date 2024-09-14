@@ -3,12 +3,15 @@ import './Characters.css';
 import { Link } from 'react-router-dom';
 
 function Characters(props) {
-
+    
+    // Initials 
     function saveData() {
         localStorage.setItem("Gold", props.gold);
         localStorage.setItem("Health", props.health);
         localStorage.setItem("XP", 0);
         localStorage.setItem("Weapon", "Sticky");
+        const weapon = { nome: 'Sticky', poder: 10, custo: 10 }; 
+        localStorage.setItem("Weapon", JSON.stringify(weapon));
     }
 
     return (
