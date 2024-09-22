@@ -90,14 +90,19 @@ function Store() {
 
     function buyWeapon() {
         if (nextWeapon) {
-            buyItem(nextWeapon.cost, setGold, gold, 0, `Você comprou a arma ${nextWeapon.name}!`);
-            setWeapon(nextWeapon); 
+            if (gold >= nextWeapon.cost) {
+                const newGold = gold - nextWeapon.cost;
+                setGold(newGold); 
+                setWeapon(nextWeapon); 
+                setComments(`Você comprou a arma ${nextWeapon.name}!`);
+            } else {
+                setComments(messages.noGold);
+            }
         } else {
             setComments(messages.bestWeapon);
-            setTimeout(() => setComments(""), 2000);
         }
+        setTimeout(() => setComments(""), 2000);
     }
-    
 
     return (
         <div className='game-page store-page'>
