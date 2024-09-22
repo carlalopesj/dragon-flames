@@ -18,7 +18,7 @@ function Game() {
             <Header />
             <div className="destiny-page">
                 <h1> Qual será o seu destino? </h1>
-                <div className='destiny-container'>
+                <div className='destiny-container locals'>
                     {locals.map((local) => (
                         <Cards
                             key={local.id}

@@ -56,13 +56,13 @@ function Store() {
     const nextWeapon = currentIndex < weapons.length - 1 ? weapons[currentIndex + 1] : null;
 
     const items = [
-        { id: 1, type: "+10 Saúde", image: ImgHealth, name: "10 moedas", actionBtn: addHealth },
-        { id: 2, type: "+5 XP", image: ImgXp, name: "5 moedas", actionBtn: addXP },
+        { id: 1, type: "+10 Saúde", image: ImgHealth, name: "10$", actionBtn: addHealth },
+        { id: 2, type: "+5 XP", image: ImgXp, name: "5$", actionBtn: addXP },
         {
             id: 3,
             type: nextWeapon ? nextWeapon.name : "Suprema",
             image: ImgSword,
-            name: nextWeapon ? `${nextWeapon.cost} moedas` : "Indisponível",
+            name: nextWeapon ? `${nextWeapon.cost}$` : "Indisponível",
             actionBtn: nextWeapon ? buyWeapon : null
         }
     ];
