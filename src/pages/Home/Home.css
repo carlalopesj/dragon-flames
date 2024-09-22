@@ -1,5 +1,7 @@
 .home-page {
     background-image: url(../../assets/backgrounds/background-start.jpg);
+    background-color: #010306;
+    background-image: url("https://www.transparenttextures.com/patterns/black-scales.png");
     display: flex;
     flex-direction: column;
     justify-content: center;

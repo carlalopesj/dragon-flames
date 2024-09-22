@@ -9,7 +9,7 @@ function Home() {
             <div>
                 <h1 id="title">Dragon Flames</h1>
                 <img id="img-dragon" src={ImgDragon} />
-                <p id="description" >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex ea rem quas magni illum dolorem culpa minima itaque quos optio minus, atque sequi adipisci enim quidem nostrum quia ut ratione?</p>
+                <p id="description" >Venha fazer parte desse mundo mágico, enfrente os perigos, arrisque sua sorte e faça suas estratégias. Aceita o desafio?</p>
             </div>
             <Link to="/character" className='start'>
                 <FaPlay />Start
