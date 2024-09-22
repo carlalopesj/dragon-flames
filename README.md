@@ -23,5 +23,6 @@ Estou o refazendo com React. Sua versão antiga com HTML, CSS e JS, pode ser enc
 - Melhorar renderização das imagens
 - Criar conta
 - Destruir/quebrar a arma, após um tempo de uso
+- Alterar imagem da arma na loja, conforme for comprar
 
 
