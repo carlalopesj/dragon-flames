@@ -62,7 +62,7 @@ function Store() {
             id: 3,
             type: nextWeapon ? nextWeapon.name : "Suprema",
             image: ImgSword,
-            name: nextWeapon ? `${nextWeapon.cost}$` : "Indisponível",
+            name: nextWeapon ? `${nextWeapon.cost}$` : "Limite",
             actionBtn: nextWeapon ? buyWeapon : null
         }
     ];
